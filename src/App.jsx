@@ -1,14 +1,15 @@
 import { useState } from "react";
-import Header from "./components/header";
-import Hello from "./components/hello";
+import FormTab from "./components/FormTab";
+import HomeTab from "./components/HomeTab";
 
-function App() {
+const App = () => {
+  const [currTab, setCurrTab] = useState("home");
   return (
     <div className="w-96">
-      <Header />
-      <Hello />
+      {currTab === "home" && <HomeTab setCurrTab={setCurrTab} />}
+      {currTab === "form" && <FormTab setCurrTab={setCurrTab} />}
     </div>
   );
-}
+};
 
 export default App;
