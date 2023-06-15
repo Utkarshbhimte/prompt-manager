@@ -25,9 +25,9 @@ const FormTab = ({ setCurrTab }) => {
           setTitle("");
           setPrompt("");
         });
-      });
 
-      setCurrTab("home");
+        setCurrTab("home");
+      });
     } catch (error) {
       console.error(error);
       toast.error(error.message);
@@ -37,7 +37,7 @@ const FormTab = ({ setCurrTab }) => {
     <div>
       <div
         onClick={() => setCurrTab("home")}
-        className="flex items-center justify-between p-4 border-b border-gray-200 mb-2 sticky top-0"
+        className="flex items-center justify-between p-4 border-b border-gray-200 mb-2 sticky top-0 bg-white"
       >
         <div className="min-w-0 flex-1">
           <h2 className="text-xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
@@ -49,7 +49,7 @@ const FormTab = ({ setCurrTab }) => {
           type="button"
           className="rounded-lg  p-1 shadow-sm text-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
         >
-          <ChevronLeft className="h-6 w-6" aria-hidden="true" />
+          <ChevronLeft className="h-5 w-5" aria-hidden="true" />
         </button>
       </div>
 
@@ -92,9 +92,6 @@ const FormTab = ({ setCurrTab }) => {
                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
-            <p className="mt-3 text-sm leading-6 text-gray-600">
-              Write a few sentences about yourself.
-            </p>
           </div>
         </div>
 
