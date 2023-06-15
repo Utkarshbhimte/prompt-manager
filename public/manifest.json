@@ -1,6 +1,6 @@
 {
-    "name": "react-vite-chrome-extension",
-    "description": "Starter pack for Chrome extension development uses React + Vite",
+    "name": "prompt-vault",
+    "description": "Manage your prompts easily",
     "version": "0.0.1",
     "manifest_version": 3,
     "icons": {

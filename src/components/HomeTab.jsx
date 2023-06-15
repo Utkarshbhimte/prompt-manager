@@ -26,7 +26,7 @@ const HomeTab = ({ setCurrTab }) => {
   }, []);
   return (
     <div>
-      <div className="flex items-center justify-between p-4 border-b border-gray-200 mb-2">
+      <div className="flex items-center justify-between p-4 border-b border-gray-200 mb-2 sticky top-0">
         <div className="min-w-0 flex-1">
           <h2 className="text-xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
             Prompts

@@ -1,37 +1,43 @@
 import React from "react";
 import { ChevronLeft } from "lucide-react";
 import { useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 
 const FormTab = ({ setCurrTab }) => {
   const [title, setTitle] = useState("");
   const [prompt, setPrompt] = useState("");
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    const createdAt = new Date().toISOString();
+    try {
+      e.preventDefault();
+      const createdAt = new Date().toISOString();
 
-    if (!title.length) return;
-    if (!prompt.length) return;
+      if (!title.length) return;
+      if (!prompt.length) return;
 
-    const newEntry = { title, prompt, createdAt };
+      const newEntry = { title, prompt, createdAt };
 
-    chrome.storage.sync.get(["entries"], (result) => {
-      let entries = result.entries || [];
-      entries.push(newEntry);
-      chrome.storage.sync.set({ entries }, function () {
-        console.log("Data is stored in Chrome storage");
-        setTitle("");
-        setPrompt("");
+      chrome.storage.sync.get(["entries"], (result) => {
+        let entries = result.entries || [];
+        entries.push(newEntry);
+        chrome.storage.sync.set({ entries }, function () {
+          console.log("Data is stored in Chrome storage");
+          setTitle("");
+          setPrompt("");
+        });
       });
-    });
 
-    setCurrTab("home");
+      setCurrTab("home");
+    } catch (error) {
+      console.error(error);
+      toast.error(error.message);
+    }
   };
   return (
     <div>
       <div
         onClick={() => setCurrTab("home")}
-        className="flex items-center justify-between p-4 border-b border-gray-200 mb-2"
+        className="flex items-center justify-between p-4 border-b border-gray-200 mb-2 sticky top-0"
       >
         <div className="min-w-0 flex-1">
           <h2 className="text-xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
@@ -108,6 +114,7 @@ const FormTab = ({ setCurrTab }) => {
           </button>
         </div>
       </form>
+      <Toaster position="top-center" reverseOrder={false} />
     </div>
   );
 };

@@ -29,7 +29,6 @@ const PromptLine = ({ prompt }) => {
     >
       <div className="flex-1">
         <div className="text-md">{prompt.title}</div>
-        <div className="text-xs text-gray-400">{prompt.prompt}</div>
       </div>
       {!isCopied && (
         <Copy className="h-4 w-4 text-gray-400 transition-all duration-300 opacity-0 group-hover:opacity-100" />
